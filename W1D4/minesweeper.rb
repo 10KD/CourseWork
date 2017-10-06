@@ -7,7 +7,7 @@ class Board
 
   def populate_bombs
     9.times do |i|
-      @grid[bomb_position][bomb_position] = "BOMB!"
+      @self[bomb_position] = "BOMB!"
     end
   end
 
@@ -24,8 +24,8 @@ class Board
   def near_bomb_count(row, col)
     (row - 1).upto(row + 1).each do |row_sub|
       (col - 1).upto(col + 1).each do |col_sub|
-        unless @grid[row_sub][col_sub].is_a?(String)
-          @grid[row_sub][col_sub] += 1
+        unless self[row_sub, col_sub].is_a?(String)
+          self[row_sub, col_sub] += 1
         end
       end
     end
