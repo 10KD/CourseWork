@@ -44,7 +44,10 @@ class Map
   end
 
   def assign(key, value)
-    @ivar.push([key, value]) unless self.key?(key)
+    pair_index = @ivar.index {|pair| pair[0] == key}
+    pair_index ? @ivar[pair_index][1] = value : @ivar.push([key, value])
+   [key, value]
+    # @ivar.push([key, value]) unless self.key?(key)
   end
 
 
@@ -60,8 +63,8 @@ class Map
     @ivar
   end
 
-  protected
-  def key?(key)
-    @ivar.any? { |pair| pair[0] == key }
-  end
+  # protected
+  # def key?(key)
+  #   @ivar.any? { |pair| pair[0] == key }
+  # end
 end

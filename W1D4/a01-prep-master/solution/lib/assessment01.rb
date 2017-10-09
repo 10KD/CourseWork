@@ -83,7 +83,7 @@ class Array
     prc ||= Proc.new { |x, y| x <=> y }
 
     return self if count <= 1
-    
+
     midpoint = count / 2
     sorted_left = self.take(midpoint).merge_sort(&prc)
     sorted_right = self.drop(midpoint).merge_sort(&prc)
